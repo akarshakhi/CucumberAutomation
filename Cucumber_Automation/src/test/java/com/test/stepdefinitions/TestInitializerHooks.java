@@ -5,6 +5,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 import com.test.base.BaseInitialiser;
 import com.test.base.BrowserFactory;
+import com.test.utilities.PropHolder;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -16,10 +17,11 @@ public class TestInitializerHooks extends BaseInitialiser{
 	
 	@Before
 	public void beforeScenario(Scenario scenario) {
-		String browserName = "chrome";
+		String browserName = PropHolder.getBrowserName();
 		driver = BrowserFactory.createWebDriver(browserName);
 		driver.manage().deleteAllCookies();
 		sc = scenario;
+		System.out.println("Before Scenario is executed");
 	}
 	
 	@After
@@ -28,6 +30,7 @@ public class TestInitializerHooks extends BaseInitialiser{
 			String screenshotName = scenario.getName().replaceAll(" ", "-");
 			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(sourcePath, "image/png", screenshotName);
+			System.out.println("After Scenario is executed");
 		}
 	}
 	
