@@ -1,5 +1,7 @@
 package com.test.pages;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -7,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 
 public class Login {
 	
@@ -19,23 +22,20 @@ public class Login {
 		}
 		
 	//Locating the username text box
-	@FindAll({
-		@FindBy(id="wrapper"),
-		@FindBy(id="userName")
-	})
+	@FindBy(id="txtUsername")
 	WebElement username;
 	
 	//Locating the password text box
-	@FindBy(id="password")
+	@FindBy(id="txtPassword")
 	WebElement pswd;
 	
 	//Locating Login Button
-	@FindBy(id="login")
+	@FindBy(id="btnLogin")
 	WebElement loginBtn;
 	
 	public void Navigate_HomePage() {
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get("https://demoqa.com/login");
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("https://opensource-demo.orangehrmlive.com/");
 	}
 	
 	
@@ -44,5 +44,9 @@ public class Login {
 		username.sendKeys(uName);
 		pswd.sendKeys(pwd);
 		loginBtn.click();
+	}
+	
+	public void Verify_LoginPage() throws InterruptedException {
+		driver.close();
 	}
 }

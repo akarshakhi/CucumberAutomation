@@ -30,8 +30,8 @@ public class TestInitializerHooks extends BaseInitialiser{
 			String screenshotName = scenario.getName().replaceAll(" ", "-");
 			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(sourcePath, "image/png", screenshotName);
-			System.out.println("After Scenario is executed");
 		}
+		System.out.println("After Scenario is executed");
 	}
 	
 	public static void takeScreenshot() {

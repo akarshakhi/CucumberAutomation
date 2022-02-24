@@ -1,5 +1,6 @@
 Feature: Login Action
 
 Scenario: Successful Login with Valid Credentials
-	Given User is on Welcome Page
-	When User Entered "test123" and "Aa@123456"
+	Given User navigates to home Page
+	When User Entered Username as "test123" and Password as "Aa@123456"
+	Then Verify the Login Page

@@ -8,14 +8,18 @@ import io.cucumber.java.en.When;
 
 public class stepDefination {
 	
-	@Given("^User is on Welcome Page$")
-	public void user_on_welcome_page() {
+	@Given("^User navigates to home Page$")
+	public void User_navigates_to_home_Page() {
 		LoginAction.homepage();
+	}	
+	@When("User Entered Username as {string} and Password as {string}")
+	public void user_entered_username_as_and_password_as(String username, String password) throws InterruptedException {
+	    LoginAction.login(username, password);
+	    Thread.sleep(10);
 	}
-
-	@When("User Entered {string} and {string}")
-	public void user_entered_and(String string, String string2) {
-	    LoginAction.login(string, string2);
-	    
+	@Then("Verify the Login Page")
+	public void Verify_the_Login_page() throws InterruptedException {
+		LoginAction.verifyLoginPage();	 
+		
 	}
 }
